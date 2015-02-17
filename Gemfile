@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 #bootstrap linking
 gem 'bootstrap-sass',       '3.2.0.0'
+
+# bcrypt file for hashing the password
+gem 'bcrypt',               '3.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
