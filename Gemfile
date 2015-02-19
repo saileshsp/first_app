@@ -7,6 +7,12 @@ gem 'bootstrap-sass',       '3.2.0.0'
 
 # bcrypt file for hashing the password
 gem 'bcrypt',               '3.1.7'
+
+#to create sample users
+gem 'faker',                '1.4.2'
+#pagination of users
+gem 'will_paginate',           '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

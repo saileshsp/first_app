@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   get 'static_pages/contact'
   
-  get 'signup'  => 'users#new'
+  get 'signup' => 'users#new'
   
   get 'login'  => 'sessions#new'
   
