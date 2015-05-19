@@ -7,9 +7,9 @@ role :web, %w{deployer@10.18.83.143}
 role :db, %w{deployer@10.18.83.143}
 
 # Define server(s)
-server "10.18.83.143", user: "deployer", role: %w{app}
-server "10.18.83.143", user: "deployer", role: %w{db}
-server "10.18.83.143", user: "deployer", role: %w{web}
+server '10.18.83.143', user: 'deployer', role: %w{app}
+server '10.18.83.143', user: 'deployer', role: %w{db}
+server '10.18.83.143', user: 'deployer', role: %w{web}
 # SSH Options
 # See the example commented out section in the file
 # for more options.
