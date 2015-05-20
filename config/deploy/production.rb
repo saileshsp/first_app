@@ -3,15 +3,15 @@
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
 
-server '10.18.83.143', user: 'deployer', role: %w{app}
-server '10.18.83.143', user: 'deployer', role: %w{db}
-server '10.18.83.143', user: 'deployer', role: %w{web}
+server '10.18.83.134', user: 'deployer', role: %w{app}
+server '10.18.83.134', user: 'deployer', role: %w{db}
+server '10.18.83.134', user: 'deployer', role: %w{web}
 
 
 
-role :app, %w{deployer@10.18.83.143}, my_property: :my_value
-role :web, %w{deployer@10.18.83.143}, other_property: :other_value
-role :db, %w{deployer@10.18.83.143}
+role :app, %w{deployer@10.18.83.134}, my_property: :my_value
+role :web, %w{deployer@10.18.83.134}, other_property: :other_value
+role :db, %w{deployer@10.18.83.134}
 
 # Define server(s)
 
