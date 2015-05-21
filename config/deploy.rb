@@ -40,15 +40,14 @@ set :tests, []
 # check out:
 # http://capistranorb.com/
 
- namespace  :deploy do
+ 
+namespace :deploy do
+  desc "Start Application"
+  task :start, :roles => :app do
 
-  desc 'Restart application'
-   task :restart do
-     on roles(:app), in: :sequence, wait: 5 do
-       # Your restart mechanism here, for example:
-      execute rails s -e production
-    end
-   end
+    run "cd #{current_path}; #{asset_env} rails s -e production "
+    # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
+  end
 # desc 'Restart application'
  # task :restart do
   #  on roles(:app), in: :sequence, wait: 5 do
@@ -113,4 +112,4 @@ set :tests, []
    # end
  # end
 
-#end
+end
