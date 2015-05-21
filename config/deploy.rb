@@ -43,7 +43,7 @@ set :tests, []
  
 namespace :deploy do
   desc "Start Application"
-  task :start, :roles => :app do
+  task :start, :roles (:app) do
 
     run "cd #{current_path}; #{asset_env} rails s -e production "
     # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
