@@ -40,7 +40,7 @@ set :tests, []
 # check out:
 # http://capistranorb.com/
 
- namespace: deploy do
+ namespace  :deploy do
 
   desc 'Restart application'
    task :restart do
