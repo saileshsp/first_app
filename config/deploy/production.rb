@@ -3,15 +3,15 @@
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
 
-server '10.18.83.136', user: 'knome', role: %w{app}
-server '10.18.83.136', user: 'knome', role: %w{db}
-server '10.18.83.136', user: 'knome', role: %w{web}
+server '10.18.83.134', user: 'deployer', role: %w{app}
+server '10.18.83.134', user: 'deployer', role: %w{db}
+server '10.18.83.134', user: 'deployer', role: %w{web}
 
 
 
-role :app, %w{knome@10.18.83.136}, my_property: :my_value
-role :web, %w{knome@10.18.83.136}, other_property: :other_value
-role :db, %w{knome@10.18.83.136}
+role :app, %w{deployer@10.18.83.134}, my_property: :my_value
+role :web, %w{deployer@10.18.83.134}, other_property: :other_value
+role :db, %w{deployer@10.18.83.134}
 
 # Define server(s)
 
@@ -22,8 +22,8 @@ role :db, %w{knome@10.18.83.136}
 set :ssh_options, {
     forward_agent: false,
     auth_methods: %w(password),
-    password: 'knome',
-    user: 'knome',
+    password: 'password',
+    user: 'deployer',
     keys: %w(/home/knome/.ssh/id_rsa)
 }
 
