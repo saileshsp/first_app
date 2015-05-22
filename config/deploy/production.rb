@@ -3,15 +3,15 @@
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
 
-server '10.18.83.143', user: 'deployer', role: %w{app}
-server '10.18.83.143', user: 'deployer', role: %w{db}
-server '10.18.83.143', user: 'deployer', role: %w{web}
+server '10.18.83.136', user: 'knome', role: %w{app}
+server '10.18.83.136', user: 'knome', role: %w{db}
+server '10.18.83.136', user: 'knome', role: %w{web}
 
 
 
-role :app, %w{deployer@10.18.83.143}, my_property: :my_value
-role :web, %w{deployer@10.18.83.143}, other_property: :other_value
-role :db, %w{deployer@10.18.83.143}
+role :app, %w{knome@10.18.83.136}, my_property: :my_value
+role :web, %w{knome@10.18.83.136}, other_property: :other_value
+role :db, %w{knome@10.18.83.136}
 
 # Define server(s)
 
@@ -22,13 +22,13 @@ role :db, %w{deployer@10.18.83.143}
 set :ssh_options, {
     forward_agent: false,
     auth_methods: %w(password),
-    password: 'password',
-    user: 'deployer',
+    password: 'knome',
+    user: 'knome',
     keys: %w(/home/knome/.ssh/id_rsa)
 }
 
 #set :enable_ssl, false
-#set :deploy_to, "/home/deployer/apps/first_app"
+set :deploy_to, "/home/deployer/apps/first_app"
 #server "#{server_ip_here}", user: "deploy", roles: %w{web app db}, port: 222
 #before "deploy:restart", "fix:permission"
 
