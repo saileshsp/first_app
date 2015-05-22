@@ -20,18 +20,18 @@ set :format, :pretty
 
 
 # setup rvm.
-set :rbenv_type, :system
-set :rbenv_ruby, '2.1.2'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+#set :rbenv_type, :system
+#set :rbenv_ruby, '2.1.2'
+#set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+#set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :to_symlink,
   ["config/database.yml","public/assets"]
 
 set :keep_releases, 5
-set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :tests, []
+#set :linked_files, %w{config/database.yml}
+#$set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+#set :tests, []
 
 # Set the post-deployment instructions here.
 # Once the deployment is complete, Capistrano
@@ -39,13 +39,13 @@ set :tests, []
 # To learn more about creating tasks,
 # check out:
 # http://capistranorb.com/
-
+ after "deploy", "deploy:start"
  
 namespace :deploy do
   desc "Start Application"
   task :start, :roles (:app) do
 
-    run "cd #{current_path}; #{asset_env} rails s -e production "
+    run "cd #{current_path};  "
     # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
   end
 # desc 'Restart application'
