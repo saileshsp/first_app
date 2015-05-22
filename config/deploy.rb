@@ -43,11 +43,14 @@ set :keep_releases, 5
  
 namespace :deploy do
   desc "Start Application"
-  task :start, :roles (:app) do
+  task :start do 
+    on roles(:app) do
 
-    run "cd #{current_path};  "
+    #run "cd #{current_path};  "
     # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
+   end
   end
+end
 # desc 'Restart application'
  # task :restart do
   #  on roles(:app), in: :sequence, wait: 5 do
@@ -112,4 +115,4 @@ namespace :deploy do
    # end
  # end
 
-end
+
