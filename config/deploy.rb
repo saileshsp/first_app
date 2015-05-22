@@ -41,7 +41,7 @@ set :keep_releases, 5
 # check out:
 # http://capistranorb.com/
  
-after "deploy:start", "deploy:bundle_install"
+after "deploy", "deploy:bundle_install"
 after "deploy", "deploy:restart"
 namespace :deploy do
   desc "Start Application"
@@ -54,7 +54,7 @@ namespace :deploy do
   end
   desc "Bundle install for RVMs sake"
   task :bundle_install do
-  on roles(:app) do
+   on roles(:app) do
   execute "cd #{current_path} && /home/deployer/.rvm/bin/rvm 2.1.2 do /home/deployer/.rvm/gems/ruby-2.1.2@global/bin/bundle install"
   end
 end
