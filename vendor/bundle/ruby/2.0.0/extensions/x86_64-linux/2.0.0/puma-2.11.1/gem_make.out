@@ -1,0 +1,49 @@
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/bin/ruby -r ./siteconf20150522-12173-it9j0w.rb extconf.rb 
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling puma_http11.c
+compiling http11_parser.c
+In file included from ext/http11/http11_parser.rl:7:0:
+ext/http11/http11_parser.rl: In function ‘puma_parser_execute’:
+ext/http11/http11_parser.rl:111:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+compiling io_buffer.c
+io_buffer.c: In function ‘buf_to_str’:
+io_buffer.c:119:3: warning: pointer targets in passing argument 1 of ‘rb_str_new’ differ in signedness [-Wpointer-sign]
+   return rb_str_new(b->top, b->cur - b->top);
+   ^
+In file included from /home/knome/.rvm/rubies/ruby-2.0.0-p598/include/ruby-2.0.0/ruby/ruby.h:1568:0,
+                 from /home/knome/.rvm/rubies/ruby-2.0.0-p598/include/ruby-2.0.0/ruby.h:33,
+                 from io_buffer.c:2:
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/include/ruby-2.0.0/ruby/intern.h:674:7: note: expected ‘const char *’ but argument is of type ‘uint8_t *’
+ VALUE rb_str_new(const char*, long);
+       ^
+compiling mini_ssl.c
+In file included from mini_ssl.c:3:0:
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/include/ruby-2.0.0/ruby/backward/rubyio.h:2:2: warning: #warning use "ruby/io.h" instead of "rubyio.h" [-Wcpp]
+ #warning use "ruby/io.h" instead of "rubyio.h"
+  ^
+mini_ssl.c: In function ‘engine_init_server’:
+mini_ssl.c:100:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   DH *dh = get_dh1024();
+   ^
+mini_ssl.c:103:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   EC_KEY *ecdh = EC_KEY_new_by_curve_name(NID_secp521r1);
+   ^
+mini_ssl.c: In function ‘engine_read’:
+mini_ssl.c:164:14: warning: unused variable ‘n’ [-Wunused-variable]
+   int bytes, n;
+              ^
+mini_ssl.c: In function ‘engine_write’:
+mini_ssl.c:187:8: warning: unused variable ‘buf’ [-Wunused-variable]
+   char buf[512];
+        ^
+linking shared-object puma/puma_http11.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 puma_http11.so ./.gem.20150522-12173-w8vc86/puma
+installing default puma_http11 libraries

@@ -1,0 +1,12 @@
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/bin/ruby -r ./siteconf20150522-12173-1t46p17.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 debug_inspector.so ./.gem.20150522-12173-3l00y6
+installing default debug_inspector libraries

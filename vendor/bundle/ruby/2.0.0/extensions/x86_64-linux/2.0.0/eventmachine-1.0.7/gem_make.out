@@ -1,0 +1,13 @@
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/bin/ruby -r ./siteconf20150522-12173-1dn392n.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 fastfilereaderext.so ./.gem.20150522-12173-hshiog
+installing default fastfilereaderext libraries
