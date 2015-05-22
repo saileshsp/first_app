@@ -17,7 +17,7 @@ set :pty, true
 set :format, :pretty
 
 
-
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # setup rvm.
 #set :rbenv_type, :system
