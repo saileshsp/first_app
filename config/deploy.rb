@@ -16,8 +16,9 @@ set :pty, true
 
 set :format, :pretty
 
-
-#set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+set :use_sudo, true            
+set :user, "deployer"
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # setup rvm.
 #set :rbenv_type, :system
@@ -41,10 +42,11 @@ set :keep_releases, 5
 # http://capistranorb.com/
  
  
+after "deploy", "deploy:restart"
 namespace :deploy do
   desc "Start Application"
   task :restart do 
-    on roles(:app) do
+   on roles(:app) do
 
     run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
     run "cd #{release_path}; source $HOME/.bash_profile && thin start -C config/thin.yml"
@@ -56,13 +58,15 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-    end
+   end
   end
 
   after :finishing, 'deploy:cleanup'
 
 
 end
+
+
 # desc 'Restart application'
  # task :restart do
   #  on roles(:app), in: :sequence, wait: 5 do
