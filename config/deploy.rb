@@ -17,10 +17,21 @@ set :pty, true
 set :format, :pretty
 
 
+
+
+# setup rvm.
+set :rbenv_type, :system
 set :rbenv_ruby, '2.1.2'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :to_symlink,
   ["config/database.yml","public/assets"]
+
+set :keep_releases, 5
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :tests, []
 
 # Set the post-deployment instructions here.
 # Once the deployment is complete, Capistrano
@@ -29,15 +40,14 @@ set :to_symlink,
 # check out:
 # http://capistranorb.com/
 
-# namespace: deploy do
+ 
+namespace :deploy do
+  desc "Start Application"
+  task :start, :roles (:app) do
 
-#   desc 'Restart application'
-#   task :restart do
-#     on roles(:app), in: :sequence, wait: 5 do
-#       # Your restart mechanism here, for example:
-#       execute :touch, release_path.join('tmp/restart.txt')
-#     end
-#   end
+    run "cd #{current_path}; #{asset_env} rails s -e production "
+    # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
+  end
 # desc 'Restart application'
  # task :restart do
   #  on roles(:app), in: :sequence, wait: 5 do
@@ -102,4 +112,4 @@ set :to_symlink,
    # end
  # end
 
-#end
+end
