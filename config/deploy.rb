@@ -46,8 +46,8 @@ namespace :deploy do
   task :restart do 
     on roles(:app) do
 
-    #run "cd #{current_path};  "
-    # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
+    run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
+    run "cd #{release_path}; source $HOME/.bash_profile && thin start -C config/thin.yml"
    end
   end
   after :restart, :clear_cache do
