@@ -44,6 +44,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
  gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 
   gem 'capistrano'
   gem 'capistrano-rbenv', '~> 2.0', require: false 
