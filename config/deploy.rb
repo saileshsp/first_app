@@ -41,7 +41,7 @@ set :keep_releases, 5
 # check out:
 # http://capistranorb.com/
  
-after "deploy", "deploy:bundle_install"
+before "deploy", "deploy:bundle_install"
 after "deploy", "deploy:restart"
 namespace :deploy do
   desc "Start Application"
