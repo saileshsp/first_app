@@ -41,7 +41,7 @@ set :keep_releases, 5
 # check out:
 # http://capistranorb.com/
  
- 
+before "deploy:assets:precompile", "deploy:bundle_install"
 after "deploy", "deploy:restart"
 namespace :deploy do
   desc "Start Application"
@@ -52,6 +52,12 @@ namespace :deploy do
     run "cd #{release_path}; source $HOME/.bash_profile && thin start -C config/thin.yml"
    end
   end
+  desc "Bundle install for RVMs sake"
+  task :bundle_install do
+  on roles(:app) do
+  execute "cd #{current_path} && /home/deployer/.rvm/bin/rvm 2.1.2 do /home/deployer/.rvm/gems/ruby-2.1.2@global/bin/bundle install"
+  end
+end
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -65,6 +71,7 @@ namespace :deploy do
 
 
 end
+
 
 
 # desc 'Restart application'
