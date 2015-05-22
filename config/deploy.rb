@@ -39,17 +39,29 @@ set :keep_releases, 5
 # To learn more about creating tasks,
 # check out:
 # http://capistranorb.com/
- after "deploy", "deploy:start"
+ 
  
 namespace :deploy do
   desc "Start Application"
-  task :start do 
+  task :restart do 
     on roles(:app) do
 
     #run "cd #{current_path};  "
     # run "cd #{current_path}; #{asset_env} bundle exec thin start -C config/thin.yml"
    end
   end
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
+  after :finishing, 'deploy:cleanup'
+
+
 end
 # desc 'Restart application'
  # task :restart do
