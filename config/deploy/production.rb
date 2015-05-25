@@ -2,6 +2,13 @@
 # ======================
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
+#bundler
+set :bundle_gemfile, -> { release_path.join('Gemfile') }
+set :bundle_dir, -> { shared_path.join('bundle') }
+set :bundle_flags, '--deployment --quiet'
+set :bundle_without, %w{development test}.join(' ')
+set :bundle_binstubs, -> { shared_path.join('bin') }
+set :bundle_roles, :all
 
 server '10.18.83.134', user: 'deployer', role: %w{app}
 server '10.18.83.134', user: 'deployer', role: %w{db}
@@ -29,6 +36,7 @@ set :ssh_options, {
 
 #set :enable_ssl, false
 set :deploy_to, "/home/deployer/apps/first_app"
+fetch(:default_env).merge!(rails_env: :production)
 #server "#{server_ip_here}", user: "deploy", roles: %w{web app db}, port: 222
 #before "deploy:restart", "fix:permission"
 

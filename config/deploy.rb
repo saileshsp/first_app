@@ -1,16 +1,11 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 # rbenv
-set :rbenv_type, :user
-set :rbenv_ruby, '2.0.0-p247'
+set :rvm_ruby_version, '2.0.0p598'
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
 
 # bundler
-set :bundle_gemfile, -> { release_path.join('Gemfile') }
-set :bundle_dir, -> { shared_path.join('bundle') }
-set :bundle_flags, '--deployment --quiet'
-set :bundle_without, %w{development test}.join(' ')
-set :bundle_binstubs, -> { shared_path.join('bin') }
-set :bundle_roles, :all
 
 # rails
 set :rails_env, 'production'
