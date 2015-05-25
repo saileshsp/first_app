@@ -195,7 +195,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.10)
   bundler
   byebug
-  capistrano (~> 2.15)
+  capistrano
   capistrano-ext
   coffee-rails (~> 4.1.0)
   faker (= 1.4.2)
