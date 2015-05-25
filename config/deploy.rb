@@ -40,7 +40,6 @@ set :keep_releases, 5
 # To learn more about creating tasks,
 # check out:
 # http://capistranorb.com/
- 
 before "deploy", "deploy:bundle_install"
 after "deploy", "deploy:restart"
 namespace :deploy do
@@ -48,7 +47,7 @@ namespace :deploy do
   task :restart do 
    on roles(:app) do
 
-    run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
+    #run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
     run "cd #{release_path}; source $HOME/.bash_profile && thin start -C config/thin.yml"
    end
   end
