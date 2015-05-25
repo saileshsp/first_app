@@ -3,8 +3,10 @@
 # rbenv
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
-require "rvm/capistrano"     
+   
 require "bundler/capistrano" 
+require "rvm/capistrano"
+require 'capistrano/ext/multistage'
 set :rvm_type, :system
 set :rvm_ruby_string, '2.0.0p598'
 #set :rvm_ruby_version, '2.0.0p598'

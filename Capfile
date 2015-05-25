@@ -1,10 +1,10 @@
 # Load DSL and set up stages
-require 'capistrano/setup'
+#require 'capistrano/setup'
 
 # Include default deployment tasks
-require 'capistrano/deploy'
-require 'capistrano/bundler'
-require 'capistrano/rvm'
+#require 'capistrano/deploy'
+#require 'capistrano/bundler'
+#require 'capistrano/rvm'
 #require "rvm/capistrano" 
 #require 'rvm1/capistrano3'
 
@@ -31,5 +31,13 @@ require 'capistrano/rvm'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
-Dir.glob('lib/capistrano/**/*.rb').each { |r| import r }
+#Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+#Dir.glob('lib/capistrano/**/*.rb').each { |r| import r }
+load 'deploy' if respond_to?(:namespace) # cap2 differentiator
+
+# Uncomment if you are using Rails' asset pipeline
+# load 'deploy/assets'
+
+Dir['vendor/gems/*/recipes/*.rb','vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
+
+load 'config/deploy' 
