@@ -1,6 +1,19 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
+# rbenv
+set :rbenv_type, :user
+set :rbenv_ruby, '2.0.0-p247'
 
+# bundler
+set :bundle_gemfile, -> { release_path.join('Gemfile') }
+set :bundle_dir, -> { shared_path.join('bundle') }
+set :bundle_flags, '--deployment --quiet'
+set :bundle_without, %w{development test}.join(' ')
+set :bundle_binstubs, -> { shared_path.join('bin') }
+set :bundle_roles, :all
+
+# rails
+set :rails_env, 'production'
 # Define the name of the application
 set :application, 'first_app'
 
