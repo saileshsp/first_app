@@ -18,7 +18,7 @@ set :format, :pretty
 
 set :use_sudo, true            
 set :user, "deployer"
-set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+#set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # setup rvm.
 #set :rbenv_type, :system
