@@ -40,7 +40,7 @@ set :keep_releases, 5
 # To learn more about creating tasks,
 # check out:
 # http://capistranorb.com/
-before "deploy", "deploy:bundle_install"
+after "deploy", "deploy:bundle_install"
 after "deploy", "deploy:restart"
 namespace :deploy do
   desc "Start Application"
