@@ -1,12 +1,13 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+#lock '3.4.0'
 # rbenv
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 set :rvm_ruby_version, '2.0.0p598'
-set :default_env, { rvm_bin_path: '~/.rvm/bin' }
-SSHKit.config.command_map[:rake] ||= "rake"
-SSHKit.config.command_map[:rake].sub!(/\(.*\)rake/, "\1bundle exec rake")
-SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
-
+#set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+#SSHKit.config.command_map[:rake] ||= "rake"
+#SSHKit.config.command_map[:rake].sub!(/\(.*\)rake/, "\1bundle exec rake")
+#SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
+#
 # bundler
 
 # rails
