@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 #lock '3.4.0'
 # rbenv
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
    
 require "bundler/capistrano" 
@@ -62,16 +62,14 @@ set :keep_releases, 5
 before "deploy:restart", "deploy:bundle_install"
 namespace :deploy do
   desc "Start Application"
-  task :restart do 
-   on roles(:app) do
+  task :restart, :roles => :app do
 
     #run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
     run "cd #{release_path}; source $HOME/.bash_profile && thin start -C config/thin.yml"
    end
   end
   desc "Bundle install for RVMs sake"
-  task :bundle_install do
-   on roles(:app) do
+  task :bundle_install, :roles => :app do
     
     run   "cd #{deploy_to}/current && bundle install" 
     
