@@ -2,6 +2,11 @@
 #lock '3.4.0'
 # rbenv
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+
+require "rvm/capistrano"     
+require "bundler/capistrano" 
+set :rvm_type, :system
+set :rvm_ruby_string, '2.0.0p598'
 #set :rvm_ruby_version, '2.0.0p598'
 #set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 #SSHKit.config.command_map[:rake] ||= "rake"
