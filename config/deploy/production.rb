@@ -3,6 +3,7 @@
 # Define roles, user and IP address of deployment server
 # role :name, %{[user]@[IP adde.]}
 #bundler
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 set :bundle_gemfile, -> { release_path.join('Gemfile') }
 set :bundle_dir, -> { shared_path.join('bundle') }
 set :bundle_flags, '--deployment --quiet'

@@ -42,10 +42,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+ gem 'capistrano-rails'
   gem 'capistrano'
   gem 'capistrano-bundler'
-  #gem 'rvm-capistrano'
+  gem 'rvm-capistrano'
   #gem 'capistrano-ext'
   #gem 'capistrano-rbenv', '~> 2.0', require: false 
 group :development, :test do

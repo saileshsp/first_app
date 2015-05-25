@@ -1,17 +1,27 @@
 # config valid only for current version of Capistrano
 #lock '3.4.0'
 # rbenv
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
+    
+#require "bundler/capistrano"
+#require 'capistrano/ext/multistage'
+#require "whenever/capistrano"
+
+#set :whenever_command, "bundle exec whenever"
+#set :whenever_identifier, defer { "#{application}_#{stage}" }
+
+#load 'deploy/assets'
+
+#require "rvm/capistrano"
 #require "capistrano/rvm"     
 #require "bundler/capistrano" 
 set :rvm_type, :system
 set :rvm_ruby_string, '2.0.0p598'
 #set :rvm_ruby_version, '2.0.0p598'
-#set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 #SSHKit.config.command_map[:rake] ||= "rake"
 #SSHKit.config.command_map[:rake].sub!(/\(.*\)rake/, "\1bundle exec rake")
-#SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
+SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
 #
 # bundler
 
@@ -26,6 +36,7 @@ set :scm, :git
 set :repo_url, 'https://github.com/saileshsp/first_app.git'
 
 # Define where to put your application code
+#set :deploy_to, "/home/deployer/apps/first_app"
 set :deploy_to, "/home/deployer/apps/first_app"
 
 set :pty, true
@@ -33,7 +44,7 @@ set :pty, true
 set :format, :pretty
 
 set :use_sudo, true            
-set :user, "deployer"
+set :user, "knome"
 #set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # setup rvm.
