@@ -54,7 +54,10 @@ namespace :deploy do
   desc "Bundle install for RVMs sake"
   task :bundle_install do
    on roles(:app) do
-  execute "cd #{current_path} && /home/deployer/.rvm/bin/rvm 2.1.2 do /home/deployer/.rvm/gems/ruby-2.1.2/bin/bundle install"
+  run <<-CMD
+      cd #{deploy_to}/current &&
+      bundle install --path vendor/bundle install --without development --quiet test --deployment --local --quiet
+    CMD
   end
 end
   after :restart, :clear_cache do
