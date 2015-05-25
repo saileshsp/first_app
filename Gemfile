@@ -44,6 +44,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
   gem 'capistrano'
+  gem 'capistrano-bundler'
   #gem 'rvm-capistrano'
   #gem 'capistrano-ext'
   #gem 'capistrano-rbenv', '~> 2.0', require: false 

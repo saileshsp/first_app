@@ -1,0 +1,16 @@
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/bin/ruby -r ./siteconf20150525-9863-st8tcq.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling threads.c
+compiling breakpoint.c
+compiling locker.c
+compiling byebug.c
+compiling context.c
+linking shared-object byebug/byebug.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.so ./.gem.20150525-9863-8aq83j/byebug
+installing default byebug libraries
