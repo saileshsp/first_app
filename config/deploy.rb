@@ -54,9 +54,8 @@ namespace :deploy do
   desc "Bundle install for RVMs sake"
   task :bundle_install do
    on roles(:app) do
-    execute
-      cd #{deploy_to}/current &&
-      bundle install --path vendor/bundle install --without development --quiet test --deployment --local --quiet
+    
+    run   "cd #{deploy_to}/current && bundle install" 
     
   end
 end
