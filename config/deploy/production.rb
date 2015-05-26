@@ -11,15 +11,15 @@ set :bundle_without, %w{development test}.join(' ')
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
 
-server '10.18.83.134', user: 'deployer', role: %w{app}
-server '10.18.83.134', user: 'deployer', role: %w{db}
-server '10.18.83.134', user: 'deployer', role: %w{web}
+server '10.18.83.134', user: 'knome', role: %w{app}
+server '10.18.83.134', user: 'knome', role: %w{db}
+server '10.18.83.134', user: 'knome', role: %w{web}
 
 
 
-role :app, %w{deployer@10.18.83.134}, my_property: :my_value
-role :web, %w{deployer@10.18.83.134}, other_property: :other_value
-role :db, %w{deployer@10.18.83.134}
+role :app, %w{knome@10.18.83.134}, my_property: :my_value
+role :web, %w{knome@10.18.83.134}, other_property: :other_value
+role :db, %w{knome@10.18.83.134}
 
 # Define server(s)
 
@@ -30,13 +30,13 @@ role :db, %w{deployer@10.18.83.134}
 set :ssh_options, {
     forward_agent: false,
     auth_methods: %w(password),
-    password: 'password',
-    user: 'deployer',
+    password: 'knome',
+    user: 'knome',
     keys: %w(/home/knome/.ssh/id_rsa)
 }
 
 #set :enable_ssl, false
-set :deploy_to, "/home/deployer/apps/first_app"
+set :deploy_to, "/home/knome/sailesh/first_app"
 fetch(:default_env).merge!(rails_env: :production)
 #server "#{server_ip_here}", user: "deploy", roles: %w{web app db}, port: 222
 #before "deploy:restart", "fix:permission"

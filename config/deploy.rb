@@ -37,7 +37,7 @@ set :repo_url, 'https://github.com/saileshsp/first_app.git'
 
 # Define where to put your application code
 #set :deploy_to, "/home/deployer/apps/first_app"
-set :deploy_to, "/home/deployer/apps/first_app"
+set :deploy_to, "/home/knome/sailesh/first_app"
 
 set :pty, true
 
@@ -69,6 +69,14 @@ set :keep_releases, 5
 # http://capistranorb.com/
 
 before "deploy:restart", "deploy:bundle_install"
+
+before "deploy:restart", "fix:permission"
+
+namespace :fix do
+  task :permission, roles(:app, :background, :live) do
+    run  "chown -R deploy:deploy #{deploy_to}"
+  end
+end
 namespace :deploy do
   desc "Start Application"
   task :restart do 
