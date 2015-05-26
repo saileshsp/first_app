@@ -37,7 +37,7 @@ set :ssh_options, {
 
 #set :enable_ssl, false
 set :deploy_to, "/home/knome/sailesh/first_app"
-fetch(:default_env).merge!(rails_env: :production)
+#fetch(:default_env).merge!(rails_env: :production)
 #server "#{server_ip_here}", user: "deploy", roles: %w{web app db}, port: 222
 #before "deploy:restart", "fix:permission"
 
