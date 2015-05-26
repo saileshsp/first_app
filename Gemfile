@@ -47,7 +47,7 @@ gem 'nokogiri', '~> 1.6.6.2'
  gem 'capistrano-rails'
   gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'rvm-capistrano'
+  gem 'capistrano-rvm'
   #gem 'capistrano-ext'
   #gem 'capistrano-rbenv', '~> 2.0', require: false 
 group :development, :test do
