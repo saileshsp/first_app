@@ -43,6 +43,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 gem  'i18n',  '~> 0.7.0'
+gem 'nokogiri', '~> 1.6.6.2'
  gem 'capistrano-rails'
   gem 'capistrano'
   gem 'capistrano-bundler'
