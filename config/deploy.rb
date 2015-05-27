@@ -60,28 +60,65 @@ set :to_symlink,
 set :keep_releases, 5
 
 
+#before "deploy:finished", "sailesh:restart"
+#namespace :rake do  
+  #desc "Run a task on a remote server."  
+  # run like: cap staging rake:invoke task=a_certain_task  
+  #task :invoke do  
+   # run("cd #{deploy_to}/current; /usr/bin/env rake #{ENV['task']} RAILS_ENV=#{rails_env}")  
+  #end  
+#end
 
-before "deploy:restart", "fix:permission"
+#namespace :fix do
+ # task :permission do
+ #   on roles(:app) do
+  #  run  "chown -R  #{deploy_to}"
+ #  end
+  #end
+#end
 
-namespace :fix do
-  task :permission, :roles => [:app, :web, :db] do
-    run  "chown -R deploy:deploy #{deploy_to}"
-  end
-end
+#namespace :sailesh do
+  #desc "Restarts the server" do
+  #  desc "Restart the app server"
+   # task :restart do
+  #   on roles(:app, :web, :db) do
+     # run "cd #{current_path};  `bundle exec thin stop -C
+#config/thin.yml`"
+    #  run "cd #{deploy_to}/current && bundle exec thin start -C config/thin.yml"
+  #  end
+  # end
+ # end
+#end
+
+
+
+#trying in a new way for thin server configuring
 
 namespace :deploy do
-  desc "Restarts the server" do
-    desc "Restart the app server"
-    task :restart, :roles => [:app, :db, :web] do
-      run "cd #{current_path};  `bundle exec thin stop -C
-config/thin.yml`"
-      run "cd #{current_path}; `bundle exec thin start -C
-config/thin.yml`"
+  desc "Start the Thin processes"
+  task :start do
+    on roles(:app) do
+
+    execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start -C config/thin.yml"
     end
   end
+
+  desc "Stop the Thin processes"
+  task :stop do
+     on roles(:app) do
+
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
+     end 
+  end
+
+  desc "Restart the Thin processes"
+  task :restart do
+   on roles(:app) do
+
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin restart -C config/thin.yml"
+     end 
+  end
 end
-
-
 
 #set :linked_files, %w{config/database.yml}
 #$set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
