@@ -69,7 +69,7 @@ set :keep_releases, 5
 # check out:
 # http://capistranorb.com/
 
-#before "deploy:start", "deploy:bundle_install"
+after "deploy:bundle_install", "deploy:start"
 
 #before "deploy:restart", "fix:permission"
 
