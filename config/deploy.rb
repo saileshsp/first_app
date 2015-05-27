@@ -109,7 +109,7 @@ namespace :deploy do
      on roles(:app) do
 
       #execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server"
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -P 3006"
      end 
   end
 
