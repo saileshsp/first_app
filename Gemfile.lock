@@ -195,7 +195,6 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.10)
   bundler
   byebug
-  capistrano
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
