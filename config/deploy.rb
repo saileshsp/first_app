@@ -11,12 +11,13 @@
 #set :whenever_identifier, defer { "#{application}_#{stage}" }
 
 #load 'deploy/assets'
-
+#set :rbenv_type, :user
+#set :rbenv_ruby, '2.0.0-p247'
 #require "rvm/capistrano"
 #require "capistrano/rvm"     
 #require "bundler/capistrano" 
-set :rvm_type, :system
-set :rvm_ruby_string, '2.0.0p598'
+#set :rbenv_type, :user
+#set :rbenv_ruby, '2.0.0-p598'
 #set :rvm_ruby_version, '2.0.0p598'
 #set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 #SSHKit.config.command_map[:rake] ||= "rake"
@@ -26,7 +27,7 @@ set :rvm_ruby_string, '2.0.0p598'
 # bundler
 
 # rails
-#set :rails_env, 'production'
+set :rails_env, 'production'
 # Define the name of the application
 set :application, 'first_app'
 
@@ -83,7 +84,7 @@ namespace :deploy do
    on roles(:app) do
 
     #run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
-    run "cd #{release_path}; source $HOME/.bash_profile && thin start -C config/thin.yml"
+    run "cd #{deploy_to}/current && thin start -C config/thin.yml"
    end
   end
   desc "Bundle install for RVMs sake"
