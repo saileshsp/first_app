@@ -58,6 +58,31 @@ set :to_symlink,
   ["config/database.yml","public/assets"]
 
 set :keep_releases, 5
+
+
+
+before "deploy:restart", "fix:permission"
+
+namespace :fix do
+  task :permission, :roles => [:app, :web, :db] do
+    run  "chown -R deploy:deploy #{deploy_to}"
+  end
+end
+
+namespace :deploy do
+  desc "Restarts the server" do
+    desc "Restart the app server"
+    task :restart, :roles => [:app, :db, :web] do
+      run "cd #{current_path};  `bundle exec thin stop -C
+config/thin.yml`"
+      run "cd #{current_path}; `bundle exec thin start -C
+config/thin.yml`"
+    end
+  end
+end
+
+
+
 #set :linked_files, %w{config/database.yml}
 #$set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 #set :tests, []
@@ -69,7 +94,7 @@ set :keep_releases, 5
 # check out:
 # http://capistranorb.com/
 
-after "deploy:bundle_install", "deploy:start"
+#before "deploy:restart", "deploy:bundle_install"
 
 #before "deploy:restart", "fix:permission"
 
@@ -78,36 +103,36 @@ after "deploy:bundle_install", "deploy:start"
   #  run  "chown -R deploy:deploy #{deploy_to}"
   #end
 #end
-namespace :deploy do
-  desc "Start Application"
-  task :start do 
-   on roles(:app) do
+#namespace :deploy do
+ # desc "Start Application"
+  #task :restart do 
+  # on roles(:app) do
 
     #run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
-    run "cd #{deploy_to}/current && thin start -C config/thin.yml"
-   end
-  end
-  desc "Bundle install for RVMs sake"
-  task :bundle_install do
-   on roles(:app) do
+   # run "cd #{deploy_to}/current && thin start -C config/thin.yml"
+   #end
+  #end
+  #desc "Bundle install for RVMs sake"
+  #task :bundle_install do
+  # on roles(:app) do
     
-    run   "cd #{deploy_to}/current && bundle install" 
+    #run   "cd #{deploy_to}/current && bundle install" 
     
-  end
-end
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #end
+#end
+  #after :restart, :clear_cache do
+   # on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-   end
-  end
+   #end
+  #end
 
-  after :finishing, 'deploy:cleanup'
+ # after :finishing, 'deploy:cleanup'
 
 
-end
+#end
 
 
 
