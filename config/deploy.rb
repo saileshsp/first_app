@@ -68,18 +68,18 @@ set :keep_releases, 5
 # check out:
 # http://capistranorb.com/
 
-before "deploy:restart", "deploy:bundle_install"
+#before "deploy:start", "deploy:bundle_install"
 
-before "deploy:restart", "fix:permission"
+#before "deploy:restart", "fix:permission"
 
-namespace :fix do
-  task :permission, roles(:app, :background, :live) do
-    run  "chown -R deploy:deploy #{deploy_to}"
-  end
-end
+#namespace :fix do
+  #task :permission, roles(:app, :background, :live) do
+  #  run  "chown -R deploy:deploy #{deploy_to}"
+  #end
+#end
 namespace :deploy do
   desc "Start Application"
-  task :restart do 
+  task :start do 
    on roles(:app) do
 
     #run "cd #{previous_release}; source $HOME/.bash_profile && thin stop -C config/thin.yml"
