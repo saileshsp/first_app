@@ -109,6 +109,7 @@ GEM
     rack (1.6.1)
     rack-ssl (1.4.1)
       rack
+    rack-ssl-enforcer (0.2.8)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -210,6 +211,7 @@ DEPENDENCIES
   pg (= 0.17.1)
   puma (= 2.11.1)
   rack-ssl
+  rack-ssl-enforcer
   rails (= 4.2.0)
   rails_12factor (= 0.0.2)
   rvm-capistrano
