@@ -117,7 +117,8 @@ namespace :deploy do
   task :restart do
    on roles(:app) do
 
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin restart -C config/thin.yml"
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start -C config/thin.yml"
      end 
   end
 end
