@@ -17,9 +17,9 @@ server '10.18.83.137', user: 'knome', role: %w{web}
 
 
 
-#role :app, %w{knome@10.18.83.134}, my_property: :my_value
-#role :web, %w{knome@10.18.83.134}, other_property: :other_value
-#role :db, %w{knome@10.18.83.134}
+role :app, %w{knome@10.18.83.134}, my_property: :my_value
+role :web, %w{knome@10.18.83.143}, other_property: :other_value
+role :db, %w{knome@10.18.83.137}
 
 # Define server(s)
 

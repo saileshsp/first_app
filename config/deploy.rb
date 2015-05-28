@@ -98,7 +98,7 @@ after "deploy", "deploy:restart"
 namespace :deploy do
   desc "Start the Thin processes"
   task :start do
-    on roles(:app) do
+    on roles(:app, :web, :db) do
 
     execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start -C config/thin.yml"
     end
@@ -106,7 +106,7 @@ namespace :deploy do
 
   desc "Stop the Thin processes"
   task :stop do
-     on roles(:app) do
+     on roles(:app, :web, :db) do
 
       #execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
       execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -P 3006"
@@ -115,7 +115,7 @@ namespace :deploy do
 
   desc "Restart the Thin processes"
   task :restart do
-   on roles(:app) do
+   on roles(:app, :web, :db) do
 
       execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
       execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start -C config/thin.yml"
