@@ -100,7 +100,7 @@ namespace :deploy do
   task :start do
     on roles(:app) do
 
-    execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start --ssl -C config/thin.yml"
+    execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start -C config/thin.yml"
     end
   end
 
@@ -108,7 +108,7 @@ namespace :deploy do
   task :stop do
      on roles(:app) do
 
-      execute  "cd /home/knome/sailesh/first_app/current; bundle exec thin stop --ssl -C config/thin.yml"
+      execute  "cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
      # execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -P 3006"
      end 
   end
@@ -117,8 +117,8 @@ namespace :deploy do
   task :restart do
    on roles(:app) do
 
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop --ssl -C config/thin.yml"
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start --ssl -C config/thin.yml"
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop -C config/thin.yml"
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start -C config/thin.yml"
      end 
   end
 end
