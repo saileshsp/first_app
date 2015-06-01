@@ -7,7 +7,7 @@ Rails.application.configure do
   #config.force_ssl = true
   end
   #config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
- config.middleware.insert_before ActionDispatch::Static, Rack::SSL, :exclude => proc { |env| env['HTTPS'] != 'on' }
+ #config.middleware.insert_before ActionDispatch::Static, Rack::SSL, :exclude => proc { |env| env['HTTPS'] != 'on' }
 
 
   # Eager load code on boot. This eager loads most of Rails and
