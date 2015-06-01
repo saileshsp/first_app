@@ -93,15 +93,15 @@ set :keep_releases, 5
 
 
 #trying in a new way for thin server configuring
-before "deploy", "deploy:stop"
-after "deploy", "deploy:restart"
+#before "deploy", "deploy:stop"
+#after "deploy", "deploy:restart"
 
 namespace :deploy do
   desc "Start the Thin processes"
   task :start do
     on roles(:app) do
 
-    execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start "
+    execute " cd /home/knome/sailesh/first_app/current; rails server -b 10.18.83.134 -p 7345  "
     end
   end
 
@@ -118,8 +118,8 @@ namespace :deploy do
   task :restart do
    on roles(:app) do
 
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec thin start "
+    #  execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
+      execute " cd /home/knome/sailesh/first_app/current; rails server -b 10.18.83.134 -p 7345 "
      end 
   end
 end
