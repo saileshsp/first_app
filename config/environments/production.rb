@@ -4,7 +4,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
   SampleApp::Application.configure do
-  config.force_ssl = true
+  #config.force_ssl = true
   end
   #config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
  config.middleware.insert_before ActionDispatch::Static, Rack::SSL, :exclude => proc { |env| env['HTTPS'] != 'on' }
