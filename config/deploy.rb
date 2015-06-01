@@ -93,8 +93,9 @@ set :keep_releases, 5
 
 
 #trying in a new way for thin server configuring
+before "deploy", "deploy:stop"
 after "deploy", "deploy:restart"
-#before "deploy", "deploy:stop"
+
 namespace :deploy do
   desc "Start the Thin processes"
   task :start do
