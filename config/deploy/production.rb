@@ -11,15 +11,15 @@ set :bundle_without, %w{development test}.join(' ')
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
 
-server '10.18.83.134', user: 'knome', role: %w{app}
-server '10.18.83.137', user: 'knome', role: %w{db}
-server '10.18.83.143', user: 'knome', role: %w{web}
+server '10.18.83.143', user: 'knome', role: %w{app}
+server '10.18.83.134', user: 'knome', role: %w{db}
+server '10.18.83.134', user: 'knome', role: %w{web}
 
 
 
-role :app, %w{knome@10.18.83.134}, my_property: :my_value
-role :web, %w{knome@10.18.83.137}, other_property: :other_value
-role :db, %w{knome@10.18.83.143}
+role :app, %w{knome@10.18.83.143}, my_property: :my_value
+role :web, %w{knome@10.18.83.134}, other_property: :other_value
+role :db, %w{knome@10.18.83.134}
 
 # Define server(s)
 
