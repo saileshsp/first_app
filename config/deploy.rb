@@ -13,12 +13,12 @@ require 'capistrano-db-tasks'
 
 # rails
 set :rails_env, 'production'
-set :db_local_clean, true
- # if you want to remove the dump file from the server after downloading
-set :db_remote_clean, true
+#set :db_local_clean, true
+# if you want to remove the dump file from the server after downloading
+#set :db_remote_clean, true
 
-set :assets_dir, %w(public/assets public/att)
-set :local_assets_dir, %w(public/assets public/att)
+#set :assets_dir, %w(public/assets public/att)
+#set :local_assets_dir, %w(public/assets public/att)
 
  # if you want to work on a specific local environment (default = ENV['RAILS_ENV'] || 'development')
 #set :locals_rails_env, "production"
@@ -110,19 +110,19 @@ set :keep_releases, 5
 
 #trying in a new way for thin server configuring
 #before "deploy", "deploy:stop"
-#after "deploy", "deploy:restart"
+after "deploy", "deploy:restart"
 before "deploy:restart", "deploy:migrate"
 
 namespace :deploy do
-  desc "Start the Thin processes"
+  desc "Start the Passenger processes"
   task :start do
     on roles(:app) do
 
-    execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -b 10.18.83.134 -p 7345  "
+    execute " cd /home/knome/sailesh/first_app/current; bundle exec passenger start  "
     end
   end
 
-  desc "Stop the Thin processes"
+  desc "Stop the Passenger processes"
   task :stop do
      on roles(:app) do
 
@@ -130,7 +130,7 @@ namespace :deploy do
      # execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -P 3006"
      end 
   end
-  desc "Restart the Thin processes"
+  desc "Restart the Passenger processes"
   task :migrate do
    on roles(:db) do
 
