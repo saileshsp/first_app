@@ -6,10 +6,27 @@
 #require "bundler/capistrano"
 #require 'capistrano/ext/multistage'
 #require "whenever/capistrano"
+ # if you want to remove the local dump file after loading
 
+ # tasks for db 
+require 'capistrano-db-tasks'
+
+# rails
+set :rails_env, 'production'
+set :db_local_clean, true
+ # if you want to remove the dump file from the server after downloading
+set :db_remote_clean, true
+
+set :assets_dir, %w(public/assets public/att)
+set :local_assets_dir, %w(public/assets public/att)
+
+ # if you want to work on a specific local environment (default = ENV['RAILS_ENV'] || 'development')
+#set :locals_rails_env, "production"
+
+    # if you are highly paranoid and want to prevent any push operation to the server
+#set :disallow_pushing, true
 #set :whenever_command, "bundle exec whenever"
 #set :whenever_identifier, defer { "#{application}_#{stage}" }
-
 #load 'deploy/assets'
 #set :rbenv_type, :user
 #set :rbenv_ruby, '2.0.0-p247'
@@ -26,8 +43,7 @@
 #
 # bundler
 
-# rails
-set :rails_env, 'production'
+
 # Define the name of the application
 set :application, 'first_app'
 
@@ -94,7 +110,7 @@ set :keep_releases, 5
 
 #trying in a new way for thin server configuring
 #before "deploy", "deploy:stop"
-after "deploy", "deploy:restart"
+#after "deploy", "deploy:restart"
 before "deploy:restart", "deploy:migrate"
 
 namespace :deploy do

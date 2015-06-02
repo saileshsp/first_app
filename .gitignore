@@ -17,4 +17,5 @@
 /tmp
 .bundle
 /config/secrets.yml
+/db/*.sql
 

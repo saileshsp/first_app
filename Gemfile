@@ -51,7 +51,7 @@ gem 'nokogiri', '~> 1.6.6.2'
   gem 'capistrano-rvm'
   gem 'rvm-capistrano'
   gem 'passenger'
-
+  gem "capistrano-db-tasks", require: false
  gem 'capistrano-rbenv'
  gem 'pg',             '0.17.1'
   #gem 'capistrano-ext'
