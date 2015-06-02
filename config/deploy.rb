@@ -95,13 +95,14 @@ set :keep_releases, 5
 #trying in a new way for thin server configuring
 #before "deploy", "deploy:stop"
 after "deploy", "deploy:restart"
+before "deploy:restart", "deploy:migrate"
 
 namespace :deploy do
   desc "Start the Thin processes"
   task :start do
     on roles(:app) do
 
-    execute " cd /home/knome/sailesh/first_app/current; rails server -b 10.18.83.134 -p 7345  "
+    execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -b 10.18.83.134 -p 7345  "
     end
   end
 
@@ -109,8 +110,18 @@ namespace :deploy do
   task :stop do
      on roles(:app) do
 
-      execute  "cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
+      execute  "cd /home/knome/sailesh/first_app/current; bundle exec passenger stop "
      # execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -P 3006"
+     end 
+  end
+  desc "Restart the Thin processes"
+  task :migrate do
+   on roles(:db) do
+
+    #  execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
+      
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec rake db:migrate"
+      #execute "pg_dump -C -h  -U localuser dbname | psql -h remotehost -U remoteuser dbname"
      end 
   end
 
@@ -119,7 +130,8 @@ namespace :deploy do
    on roles(:app) do
 
     #  execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
-      execute " cd /home/knome/sailesh/first_app/current; rails server "
+
+      execute " cd /home/knome/sailesh/first_app/current; bundle exec passenger start "
      end 
   end
 end

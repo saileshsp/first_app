@@ -50,8 +50,10 @@ gem 'nokogiri', '~> 1.6.6.2'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
   gem 'rvm-capistrano'
+  gem 'passenger'
 
  gem 'capistrano-rbenv'
+ gem 'pg',             '0.17.1'
   #gem 'capistrano-ext'
   #gem 'capistrano-rbenv', '~> 2.0', require: false 
 group :development, :test do
@@ -67,7 +69,7 @@ group :development, :test do
   gem 'spring'
 group :production do
 
-  gem 'pg',             '0.17.1'
+  
   gem 'rails_12factor', '0.0.2'
  # gem 'puma',           '2.11.1'
 end
