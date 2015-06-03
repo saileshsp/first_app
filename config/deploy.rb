@@ -110,8 +110,8 @@ set :keep_releases, 5
 
 #trying in a new way for thin server configuring
 #before "deploy", "deploy:stop"
-after "deploy", "deploy:restart"
-before "deploy:restart", "deploy:migrate"
+#after "deploy", "deploy:restart"
+#before "deploy:restart", "deploy:migrate"
 
 namespace :deploy do
   desc "Start the Passenger processes"
