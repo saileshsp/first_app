@@ -153,7 +153,7 @@ namespace :deploy do
   desc "start the solr server"
   task :solr_start do
     on roles(:app) do
-      execite "cd /home/knome/sailesh/first_app/current; RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
+      execute "cd /home/knome/sailesh/first_app/current; RAILS_ENV=production bundle exec rake sunspot:solr:restart"
  # desc "Start solr"
   #  task :start, :roles => :app do
    #   run "cd #{current_path}; RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start" if restart_solr
