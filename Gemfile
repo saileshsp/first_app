@@ -8,6 +8,9 @@ gem 'bootstrap-sass',       '3.2.0.0'
 # bcrypt file for hashing the password
 gem 'bcrypt',               '3.1.7'
 
+#SOLR
+gem 'sunspot_solr'
+gem 'sunspot_rails'
 #to create sample users
 gem 'faker',                '1.4.2'
 #pagination of users

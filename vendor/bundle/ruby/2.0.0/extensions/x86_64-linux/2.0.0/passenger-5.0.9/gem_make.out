@@ -1,0 +1,13 @@
+/home/knome/.rvm/rubies/ruby-2.0.0-p598/bin/ruby -r ./siteconf20150604-4949-1dksspp.rb extconf.rb
+Attempting to download https://oss-binaries.phusionpassenger.com/binaries/passenger/by_release/5.0.9/rubyext-ruby-2.0.0-x86_64-linux.tar.gz into /home/knome/first_app/vendor/bundle/ruby/2.0.0/gems/passenger-5.0.9/download_cache
+Attempting to download https://oss-binaries.phusionpassenger.com/binaries/passenger/by_release/5.0.9/nginx-1.8.0-x86_64-linux.tar.gz into /home/knome/first_app/vendor/bundle/ruby/2.0.0/gems/passenger-5.0.9/download_cache
+Attempting to download https://oss-binaries.phusionpassenger.com/binaries/passenger/by_release/5.0.9/agent-x86_64-linux.tar.gz into /home/knome/first_app/vendor/bundle/ruby/2.0.0/gems/passenger-5.0.9/download_cache
+
+make "DESTDIR=" clean
+true
+
+make "DESTDIR="
+true
+
+make "DESTDIR=" install
+true

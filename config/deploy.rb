@@ -150,6 +150,15 @@ namespace :deploy do
       execute " cd /home/knome/sailesh/first_app/current; bundle exec passenger start "
      end 
   end
+  desc "start the solr server"
+  task :solr_start do
+    on roles(:app) do
+      execite "cd /home/knome/sailesh/first_app/current; RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
+ # desc "Start solr"
+  #  task :start, :roles => :app do
+   #   run "cd #{current_path}; RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start" if restart_solr
+    end
+  end
 end
 
 #set :linked_files, %w{config/database.yml}
