@@ -6,6 +6,7 @@ require 'capistrano/deploy'
 require 'capistrano/bundler'
 require 'rvm/capistrano'
 
+
 #require 'capistrano/rbenv'
 
 #require 'capistrano/rails/migrations'

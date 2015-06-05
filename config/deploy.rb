@@ -150,13 +150,25 @@ namespace :deploy do
       execute " cd /home/knome/sailesh/first_app/current; bundle exec passenger start "
      end 
   end
+  desc "bundle install"
+  task :bundle_install do
+    on roles(:app, :db) do
+      execute "cd /home/knome/sailesh/first_app/current; bundle install --path vendor/bundle install --without development --quiet test --deployment --local --quiet"
+    end 
+  end
+ task :setup_solr_data_dir do
+    on roles(:app) do
+    execute "mkdir -p #{shared_path}/solr/data"
+    end 
+  end
   desc "start the solr server"
   task :solr_start do
     on roles(:app) do
-      execute "cd /home/knome/sailesh/first_app/current; RAILS_ENV=production bundle exec rake sunspot:solr:restart"
- # desc "Start solr"
-  #  task :start, :roles => :app do
-   #   run "cd #{current_path}; RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start" if restart_solr
+      execute "cd /home/knome/sailesh/first_app/current; RAILS_ENV=production bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+ #  desc "start solr"
+  #task :start, :roles => :app, :except => { :no_release => true } do 
+    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+  #end
     end
   end
 end

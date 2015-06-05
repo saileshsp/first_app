@@ -9,8 +9,8 @@ gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt',               '3.1.7'
 
 #SOLR
-gem 'sunspot_solr'
-gem 'sunspot_rails'
+gem 'sunspot_solr', '~> 2.2.0'
+gem 'sunspot_rails', '~> 2.2.0'
 #to create sample users
 gem 'faker',                '1.4.2'
 #pagination of users
