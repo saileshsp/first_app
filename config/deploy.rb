@@ -53,8 +53,8 @@ set :scm, :git
 set :repo_url, 'https://github.com/saileshsp/first_app.git'
 #call with cap -s env="<env>" branch="<branchname>" deploy
 
-set :branch, fetch(:branch, "saileshsp")
-set :env, fetch(:env, "production")
+#set :branch, fetch(:branch, "saileshsp")
+#set :env, fetch(:env, "production")
 
 # Define where to put your application code
 #set :deploy_to, "/home/deployer/apps/first_app"
