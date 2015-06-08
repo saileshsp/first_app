@@ -38,31 +38,6 @@ set :ssh_options, {
 }
 
 #set :enable_ssl, false
-
-# config/deploy/production.rb
- 
-set :branch do
-  # Warn that branches cannot be deployed
-  puts 'Cannot deploy a branch to production' unless fetch(:branch).nil?
- 
-    # Get the latest tags and set the default
-  default = `git fetch --tags && git tag`.split("n").last
- 
-  # Allow the developer to choose a tag to deploy
-  tag = Capistrano::CLI.ui.ask "Choose a tag to deploy (make sure to push the tag first): [Default: #{ default }] "
- 
-  # Fall back to the default if no tag was specified
-  tag = default if tag.empty?
- 
-  # Be extra cautious and exit if a tag cannot be found
-  if tag.nil?
-    puts "Cannot deploy as no tag was found"
-    exit
-  end
- 
-  # Return the tag to deploy
-  tag
-end
 set :deploy_to, "/home/knome/sailesh/first_app_branch"
 #fetch(:default_env).merge!(rails_env: :production)
 #server "#{server_ip_here}", user: "deploy", roles: %w{web app db}, port: 222
