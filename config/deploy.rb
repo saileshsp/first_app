@@ -58,7 +58,7 @@ set :env, fetch(:env, "production")
 
 # Define where to put your application code
 #set :deploy_to, "/home/deployer/apps/first_app"
-set :deploy_to, "/home/knome/sailesh/first_app"
+set :deploy_to, "/home/knome/sailesh/first_app_branch"
 
 set :pty, true
 
