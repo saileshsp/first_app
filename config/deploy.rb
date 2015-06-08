@@ -51,6 +51,10 @@ set :application, 'first_app'
 # set :repo_url, 'https://github.com/[user name]/[application name].git'
 set :scm, :git
 set :repo_url, 'https://github.com/saileshsp/first_app.git'
+#call with cap -s env="<env>" branch="<branchname>" deploy
+
+set :branch, fetch(:branch, "master")
+set :env, fetch(:env, "production")
 
 # Define where to put your application code
 #set :deploy_to, "/home/deployer/apps/first_app"
@@ -164,6 +168,7 @@ namespace :deploy do
   desc "start the solr server"
   task :solr_start do
     on roles(:app) do
+      execute "cd /home/knome/sailesh/first_app/current; bundle exec rails generate sunspot_rails:install"
       execute "cd /home/knome/sailesh/first_app/current; RAILS_ENV=production bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
  #  desc "start solr"
   #task :start, :roles => :app, :except => { :no_release => true } do 
