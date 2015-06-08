@@ -10,6 +10,7 @@
 
  # tasks for db 
 require 'capistrano-db-tasks'
+#require 'capistrano/ext/multistage'
 
 # rails
 set :rails_env, 'production'
@@ -58,6 +59,8 @@ set :repo_url, 'https://github.com/saileshsp/first_app.git'
 
 # Define where to put your application code
 #set :deploy_to, "/home/deployer/apps/first_app"
+set :branch,      fetch(:branch, 'master')
+
 set :deploy_to, "/home/knome/sailesh/first_app_branch"
 
 set :pty, true
@@ -122,7 +125,7 @@ namespace :deploy do
   task :start do
     on roles(:app) do
 
-    execute " cd /home/knome/sailesh/first_app/current; bundle exec passenger start  "
+    execute " cd /home/knome/sailesh/first_app_branch/current; bundle exec passenger start  "
     end
   end
 
@@ -130,7 +133,7 @@ namespace :deploy do
   task :stop do
      on roles(:app) do
 
-      execute  "cd /home/knome/sailesh/first_app/current; bundle exec passenger stop "
+      execute  "cd /home/knome/sailesh/first_app_branch/current; bundle exec passenger stop "
      # execute " cd /home/knome/sailesh/first_app/current; bundle exec rails server -P 3006"
      end 
   end
@@ -140,7 +143,7 @@ namespace :deploy do
 
     #  execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
       
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec rake db:migrate"
+      execute " cd /home/knome/sailesh/first_app_branch/current; bundle exec rake db:migrate"
       #execute "pg_dump -C -h  -U localuser dbname | psql -h remotehost -U remoteuser dbname"
      end 
   end
@@ -151,13 +154,13 @@ namespace :deploy do
 
     #  execute " cd /home/knome/sailesh/first_app/current; bundle exec thin stop "
 
-      execute " cd /home/knome/sailesh/first_app/current; bundle exec passenger start "
+      execute " cd /home/knome/sailesh/first_app_branch/current; bundle exec passenger start "
      end 
   end
   desc "bundle install"
   task :bundle_install do
     on roles(:app, :db) do
-      execute "cd /home/knome/sailesh/first_app/current; bundle install --path vendor/bundle install --without development --quiet test --deployment --local --quiet"
+      execute "cd /home/knome/sailesh/first_app_branch/current; bundle install --path vendor/bundle install --without development --quiet test --deployment --local --quiet"
     end 
   end
  task :setup_solr_data_dir do
@@ -168,8 +171,8 @@ namespace :deploy do
   desc "start the solr server"
   task :solr_start do
     on roles(:app) do
-      execute "cd /home/knome/sailesh/first_app/current; bundle exec rails generate sunspot_rails:install"
-      execute "cd /home/knome/sailesh/first_app/current; RAILS_ENV=production bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+      execute "cd /home/knome/sailesh/first_app_branch/current; bundle exec rails generate sunspot_rails:install"
+      execute "cd /home/knome/sailesh/first_app_branch/current; RAILS_ENV=production bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
  #  desc "start solr"
   #task :start, :roles => :app, :except => { :no_release => true } do 
     #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
