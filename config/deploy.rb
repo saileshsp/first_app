@@ -73,7 +73,7 @@ set :repo_url, 'https://github.com/saileshsp/first_app.git'
 #end
 
 # Set the deploy branch to the current branch
-set :branch, saileshsp
+set :branch, "saileshsp"
 
 set :deploy_to, "/home/knome/sailesh/first_app"
 
