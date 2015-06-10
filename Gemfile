@@ -28,10 +28,12 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 #gem 'thin'
+gem 'passenger'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'flash_policy_server'
@@ -53,16 +55,17 @@ gem 'nokogiri', '~> 1.6.6.2'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
   gem 'rvm-capistrano'
-  gem 'passenger'
+  #gem 'passenger'
   gem "capistrano-db-tasks", require: false
  gem 'capistrano-rbenv'
  gem 'capistrano-ext'
  gem 'pg',             '0.17.1'
+ #gem 'puma',           '2.11.1'
   #gem 'capistrano-ext'
   #gem 'capistrano-rbenv', '~> 2.0', require: false 
 group :development, :test do
 	
-
+gem "paperclip"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -75,7 +78,7 @@ group :production do
 
   
   gem 'rails_12factor', '0.0.2'
- # gem 'puma',           '2.11.1'
+  
 end
 end
 
