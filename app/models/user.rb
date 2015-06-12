@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-  
+    has_many :microposts, dependent: :destroy
+
+
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-
+  
   
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
@@ -27,7 +29,7 @@ class User < ActiveRecord::Base
     :retina   => '-set colorspace sRGB -strip -sharpen 0x0.5'
   }
   validates_attachment :avatar,
-    
+    presence: true,
     :size => { :in => 0..10.megabytes },
     :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
 
@@ -84,6 +86,9 @@ class User < ActiveRecord::Base
   end
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+  def feed
+    Micropost.where("user_id = ?", id)
   end
  private
 
