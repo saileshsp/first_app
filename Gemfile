@@ -7,7 +7,8 @@ gem 'bootstrap-sass',       '3.2.0.0'
 
 # bcrypt file for hashing the password
 gem 'bcrypt',               '3.1.7'
-
+gem 'social-share-button', '~> 0.1.6'
+gem 'commontator'
 #SOLR
 gem 'sunspot_solr', '~> 2.2.0'
 gem 'sunspot_rails', '~> 2.2.0'

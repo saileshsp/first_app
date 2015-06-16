@@ -11,7 +11,9 @@ before_action :correct_user,   only: :destroy
       render 'static_pages/home'
     end
   end
-
+ def index
+  @microposts = Micropost.all
+ end
   def destroy
      @micropost.destroy
     flash[:success] = "Micropost deleted"

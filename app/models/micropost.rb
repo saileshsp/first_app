@@ -5,6 +5,7 @@ class Micropost < ActiveRecord::Base
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validate  :picture_size
+  acts_as_commontable
  private
 
     # Validates the size of an uploaded picture.

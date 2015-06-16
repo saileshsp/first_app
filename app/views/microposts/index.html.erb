@@ -1,0 +1,15 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+    <%= @microposts.each do |micropost| %>
+    <%= commontator_thread(micropost) %>
+
+    	
+    <% end %>
+ 
+</ul>
+
+<%= will_paginate %>
