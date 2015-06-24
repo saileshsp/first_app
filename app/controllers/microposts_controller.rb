@@ -14,6 +14,19 @@ before_action :correct_user,   only: :destroy
  def index
   @microposts = Micropost.all
  end
+ def upvote
+  @micropost = Micropost.find(params[:id])
+  @micropost.upvote_by current_user
+  redirect_to  root_path
+end
+def downvote
+  @micropost = Link.find(params[:id])
+  @micropost.downvote_by current_user
+  redirect_to  root_path
+end
+  def score
+  self.get_upvotes.size - self.get_downvotes.size
+  end
   def destroy
      @micropost.destroy
     flash[:success] = "Micropost deleted"

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 #bootstrap linking
 gem 'bootstrap-sass',       '3.2.0.0'
-
+gem 'acts_as_votable'
 # bcrypt file for hashing the password
 gem 'bcrypt',               '3.1.7'
 gem 'social-share-button', '~> 0.1.6'

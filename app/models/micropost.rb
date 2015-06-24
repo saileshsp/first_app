@@ -6,6 +6,7 @@ class Micropost < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   validate  :picture_size
   acts_as_commontable
+  acts_as_votable
  private
 
     # Validates the size of an uploaded picture.
