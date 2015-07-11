@@ -12,6 +12,7 @@ gem 'commontator'
 #SOLR
 gem 'sunspot_solr', '~> 2.2.0'
 gem 'sunspot_rails', '~> 2.2.0'
+gem 'piwik_analytics', '~> 1.0.1'
 #to create sample users
 gem 'faker',                '1.4.2'
 #pagination of users
@@ -64,6 +65,7 @@ gem 'nokogiri', '~> 1.6.6.2'
   gem "capistrano-db-tasks", require: false
  gem 'capistrano-rbenv'
  gem 'capistrano-ext'
+ gem 'awesome_print'
  gem 'pg',             '0.17.1'
  #gem 'puma',           '2.11.1'
   #gem 'capistrano-ext'

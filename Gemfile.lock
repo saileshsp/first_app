@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_votable (0.10.0)
     arel (6.0.0)
+    awesome_print (1.6.1)
     bcrypt (3.1.7)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -157,6 +158,10 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.17.1)
+    piwik_analytics (1.0.2)
+      actionpack
+      activesupport
+      rails (>= 3.0.0)
     pr_geohash (1.0.0)
     rack (1.6.1)
     rack-test (0.6.3)
@@ -253,6 +258,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable
+  awesome_print
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.0)
   bootstrap-will_paginate (= 0.0.10)
@@ -278,6 +284,7 @@ DEPENDENCIES
   paperclip
   passenger
   pg (= 0.17.1)
+  piwik_analytics (~> 1.0.1)
   rails (= 4.2.0)
   rails_12factor (= 0.0.2)
   rvm-capistrano
