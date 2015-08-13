@@ -1,17 +1,35 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "variables";
 
 /* mixins, variables, etc. */
 
-$gray-medium-light: #eaeaea;
+$gray-medium-light: #00b2f0;
 
 /* universal */
-
+.btn-primary {
+    background-color: $black;
+    color: white !important;
+    &:hover {
+        background-color: $pink;
+        border: none;
+    }
+}
+.btn-lg {
+    background-color: $pink;
+    color: white !important;
+    &:hover {
+        background-color: $black;
+        border: none;
+    }
+}
 html {
+
   overflow-y: scroll;
 }
 
 body {
+  background-image: image-url('sailesh_app.jpg');
   padding-top: 60px;
 }
 
@@ -21,6 +39,7 @@ section {
 
 textarea {
   resize: vertical;
+  color: $blue
 }
 
 .center {
@@ -49,7 +68,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: white;
 }
 
 p {
@@ -70,22 +89,22 @@ p {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
-    text-decoration: none;
+    color: $plum;
+    text-decoration: bold;
   }
 }
 
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: 90px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  border-top: 1px solid $black;
+  color: $orange;
   a {
-    color: $gray;
+    color: $orange;
     &:hover {
-      color: $gray-darker;
+      color: $green;
     }
   }
   small {
@@ -154,10 +173,11 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid $pink;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
+  color: $blue
 }
 
 input {
@@ -198,7 +218,7 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid white;
   }
 }
 
