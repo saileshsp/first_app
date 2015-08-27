@@ -4,7 +4,7 @@
 
 /* mixins, variables, etc. */
 
-$gray-medium-light: #00b2f0;
+
 
 /* universal */
 .btn-primary {
@@ -30,7 +30,7 @@ html {
 
 body {
   background-image: image-url('sailesh_app.jpg');
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 section {
@@ -68,7 +68,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: white;
+  color: $blue;
 }
 
 p {
@@ -84,7 +84,8 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
+  
+  text-transform: Italic;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;

@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to "sailesh app", root_path, id: "logo",  image: "index1.jpg", alt: "sp logo"%>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" id= "header" >
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", static_pages_help_path %></li>
         <% if logged_in? %>
