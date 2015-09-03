@@ -13,4 +13,6 @@
  *= require_tree .
  *= require_self
   *= require social-share-button
+  *= require owl.carousel
+  *= require owl.theme
  */

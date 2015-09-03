@@ -15,6 +15,8 @@ gem 'sunspot_rails', '~> 2.2.0'
 gem 'piwik_analytics', '~> 1.0.1'
 #to create sample users
 gem 'faker',                '1.4.2'
+# for carousel
+gem 'owlcarousel-rails'
 #pagination of users
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'

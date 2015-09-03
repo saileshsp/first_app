@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require social-share-button
+//= require owl.carousel
 //= require_tree .

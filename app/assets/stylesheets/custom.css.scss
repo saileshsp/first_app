@@ -24,8 +24,11 @@
     }
 }
 html {
-
-  overflow-y: scroll;
+   
+   font-size: 1em !important;
+   color: CC0066 !important;
+   font-family: Arial !important;
+   overflow-y: scroll;
 }
 
 body {
@@ -39,7 +42,7 @@ section {
 
 textarea {
   resize: vertical;
-  color: $blue
+  color: $black
 }
 
 .center {
@@ -68,7 +71,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $blue;
+  color: $purple;
 }
 
 p {
@@ -99,8 +102,8 @@ p {
 
 footer {
   margin-top: 90px;
-  padding-top: 5px;
-  border-top: 1px solid $black;
+  padding-top: 60px;
+
   color: $orange;
   a {
     color: $orange;
@@ -173,12 +176,20 @@ aside {
 }
 /* forms */
 
-input, textarea, select, .uneditable-input {
+select, .uneditable-input {
   border: 1px solid $pink;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
-  color: $blue
+  color: $plum
+}
+
+input, textarea {
+  border: 1px solid $pink;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+  color: $black
 }
 
 input {
@@ -269,3 +280,14 @@ span.picture {
     border: 0;
   }
 }
+
+
+    #owl-demo .item{
+      margin: 3px;
+    }
+    #owl-demo .item img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+

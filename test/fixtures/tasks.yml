@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: 
+  deadline: 2015-09-02 18:57:54
+  user_id: 
+
+two:
+  description: 
+  deadline: 2015-09-02 18:57:54
+  user_id: 

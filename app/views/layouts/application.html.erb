@@ -9,13 +9,24 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
+ 
   <script src="includes/jquery/jquery-2.1.0.min.js"></script>
   <script src="includes/bootstrap/js/bootstrap.min.js"></script>
     <%= render 'layouts/header' %>
+     <font color = CC0066>
     <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
+       <div id="owl-demo">
+              
+              
+      <div class="item"><img src="public/system/avatars/1/index1_original.jpeg" alt="saileshsp"></div>
+      
+      <div class="item"><img src="assets/images/sailesh_app.jpg" alt="saileshsp"></div>
+     
+     
+    </div>
       <%= yield %>
       
 
@@ -38,8 +49,8 @@
 </script>
 <noscript><p><img src="//localhost/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
-
-  <%= render 'layouts/footer' %> 
+</font>
+  <%= render 'layouts/footer' %>
    </body>
 
    </html>
